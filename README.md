@@ -3,9 +3,9 @@
 
  Section 6.1 Entity references: entityReference.R
 
- Section 6.2 Note characteristics in relation to entity references: noteEntity.R
+ Section 6.2.1 Note characteristics in relation to entity references: noteEntity.R
 
- Section 6.2 Note characteristics in relation to interactions: noteInteraction.R
+ Section 6.2.2 Note characteristics in relation to interactions: noteInteraction.R
 
  Section 6.3 Personality traits in relation to entity references and user interactions: personalityTraits.R
 

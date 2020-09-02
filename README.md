@@ -1,4 +1,6 @@
 # A study exploring user insight generation process
+ This repository presents the data we collected from a crowdsourced study and the analysis results to explore user insight generation process.
+ 
  Section 6 Overall analysis: overview.R
 
  Section 6.1 Entity references: entityReference.R

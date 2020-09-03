@@ -9,7 +9,7 @@
 
  Section 6.2.2 Note characteristics in relation to interactions: noteInteraction.R
 
- Section 6.3 Personality traits in relation to entity references and user interactions: personalityTraits.R
+ Section 6.3 Personality traits in relation to note characteristics and user interactions: personalityTraits.R
 
  Section 6.4 The influence of age and gender: otherAnalysis.R
 

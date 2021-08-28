@@ -197,7 +197,7 @@ for(i in 1:nrow(entityNoteEva.test)){
 }
 
 
-#Fig. 8 export 11 * 5.5 inches
+#Fig. 6 export 11 * 5.5 inches
 shapRFCate = read.csv("shap/shapRFCateEntity.csv")
 featureImpRF = aggregate(.~dim, FUN = MeanAD, data = shapRFCate[, c('dim', 'shap')])
 featureImpRF = featureImpRF[order(featureImpRF$shap, decreasing = T), ]

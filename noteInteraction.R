@@ -89,6 +89,7 @@ pred = predict(optimalRF, actionNoteEva.testForest)
 cmRF = confusionMatrix(pred, actionNoteEva.testForest[, 36])
 cmRF[["byClass"]][ , "F1"]
 
+#SHAP
 exp_rf <- explain(optimalRF, data = actionNoteEva.trainForest[,-36])
 shapRFCateInt = data.frame(matrix(ncol = 5, nrow = 0))
 cnames <- c("level", "probability", "dim", "value", "shap")
@@ -141,6 +142,7 @@ for(i in 1:nrow(actionNoteEva.testFeatures)){
   write.table(shapSVMCateInt, file = "shap/shapSVMCateInt.csv", append = T, sep = ',', col.names = F, row.names = F)
 }
 
+#Fig. 9
 shapRFCateInt = read.csv("shap/shapRFCateInt.csv")
 featureImpRF = aggregate(.~dim, FUN = MeanAD, data = shapRFCateInt[, c('dim', 'shap')])
 featureImpRF = featureImpRF[order(featureImpRF$shap, decreasing = T), ]
@@ -182,6 +184,7 @@ pred = predict(optimalRF, actionNoteEva.testForest)
 cmRF = confusionMatrix(pred, actionNoteEva.testForest[, 36])
 cmRF[["byClass"]][ , "F1"]
 
+#SHAP feature importance
 exp_rf <- explain(optimalRF, data = actionNoteEva.trainForest[,-36])
 shapRFOverviewInt = data.frame(matrix(ncol = 5, nrow = 0))
 cnames <- c("level", "probability","dim", "value", "shap")

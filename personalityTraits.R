@@ -3,9 +3,8 @@ library(e1071)
 library(caret)
 library(healthcareai)
 library(boot)
-#library(ggplot2)
 personality = read.csv("data/personality.csv")
-#Fig.3
+#Fig.12 export as PDF: portrait 6.2*4 inches
 ggplot(stack(personality[,c(2:7)]), aes(x = ind, y = values)) + scale_y_continuous(limits=c(-8, 8), breaks=c(-8,-4, 0, 4,8), expand = c(0.02, 0.02)) + theme_bw() + 
   geom_boxplot() + theme(text = element_text(size=22, face="bold"), axis.text.x = element_text(angle = 30, vjust = 1, hjust=.9),axis.title.x = element_blank(),panel.border = element_blank(), axis.line = element_line(colour = "black"), axis.ticks = element_blank())
 

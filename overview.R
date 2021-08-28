@@ -5,20 +5,17 @@ selectUser = read.csv("data/entitySelectionUser.csv")
 actionUser$exploreData = rowSums(actionUser[, c('selectCountry','deselectCountry', 'deselectAll', 'hoverCountryLabel', 'selectYear', 'hoverYearLabel', 'play', 'stop', 'hoverMapPoint', 'hoverSpecificYear', 'hoverMouseline', 'hoverTimeline')])
 max(actionUser$exploreData)
 min(actionUser$exploreData)
-mean(actionUser$exploreData)
-sd(actionUser$exploreData)
+median(actionUser$exploreData)
 
 #total time spent
 max(actionUser$totalTime)
 min(actionUser$totalTime)
-mean(actionUser$totalTime)
-sd(actionUser$totalTime)
+median(actionUser$totalTime)
 
 #total actions performed
 max(actionUser$totalActions)
 min(actionUser$totalActions)
-mean(actionUser$totalActions)
-sd(actionUser$totalActions)
+median(actionUser$totalActions)
 
 #number of entities explored
 max(selectUser$countryTotal)

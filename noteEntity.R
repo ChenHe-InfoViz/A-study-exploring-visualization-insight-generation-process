@@ -3,7 +3,7 @@ library(ggplot2)
 noteChara = read.csv("data/noteAssessment.csv")
 noteChara$user = NULL
 
-#Fig. 5
+#Fig. 4
 temp = noteChara
 temp$detail[temp$detail == 0] <- "Overview/trend"
 temp$detail[temp$detail == 1] <- "Detail"

@@ -50,7 +50,7 @@ mean = mean(entityRefUser$map + entityRefUser$mapPoint)
 CI = percentileCI(entityRefUser$map + entityRefUser$mapPoint)
 results = rbind(results, data.frame(Type = "Map related", Mean = mean, min = CI[1], max = CI[2], group = "3"))
 
-#Fig. 4 export pdf 6.5*4.5
+#Fig. 6 export pdf 6.5*4.5
 ggplot(results, aes(factor(Type, levels = rev(c("Chart component", "Vertical reference line", "Line", "Map point", "Chart", "Line chart", "Map", "Line chart related", "Map related"))), Mean)) +
   geom_bar(stat="identity", aes(fill = group), width = 0.8) + geom_text(size = 5, vjust = -0.4, hjust = -0.1, data= subset(results, Mean != 0), aes(label = round(Mean, 2), fontface = 2)) +
   scale_fill_manual("legend", values = c("1" = "#f8766d", "2" = "#aaaaaa", "3" = "#00bfc4")) + 

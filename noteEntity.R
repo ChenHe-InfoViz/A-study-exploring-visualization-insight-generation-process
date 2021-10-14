@@ -37,91 +37,6 @@ ggplot(stack(temp[,c(2,3,4,5,6)])) + stat_count(aes(x=factor(values, levels=c( "
 ggplot(stack(temp[,c(7,8,9)]), aes(x = ind, y = values)) + ylab("Count") +
   theme_grey(base_size = 24) + geom_boxplot() + theme(text = element_text(size=24), axis.text.x = element_text(angle = 30, vjust = 1, hjust=.9, face="bold"), axis.title.x = element_blank(), panel.border = element_blank(), axis.line = element_line(colour = "black"), axis.ticks = element_blank(), axis.title=element_text(size=16))
 
-##################note characteristics versus entity references
-noteCharaUser = read.csv("data/noteAssessmentPerParticipant.csv")
-entityRefUser = read.csv("data/entityReferencesPerParticipant.csv")
-entityRefNoteChara = merge(noteCharaUser, entityRefUser, by = "user")
-tauFunc<-function(data,i){cor(x = data[,1][i], y = data[,2][i], method="kendall")}
-
-#correlations between note characteristics
-cor.test(noteCharaUser$detailMean, noteCharaUser$priorMean, method="kendall")
-bootTau = boot(noteCharaUser[,c('detailMean', 'priorMean')], tauFunc, 2000)
-boot.ci(bootTau)
-cor.test(noteCharaUser$detailMean, noteCharaUser$grouping, method="kendall")
-bootTau = boot(noteCharaUser[,c('detailMean', 'grouping')], tauFunc, 2000)
-boot.ci(bootTau)
-
-#category and the number of unique countries referred
-cor.test(entityRefNoteChara$statement, entityRefNoteChara$countryEntity, method="kendall")
-bootTau = boot(entityRefNoteChara[,c('statement', 'countryEntity')], tauFunc, 2000)
-boot.ci(bootTau)
-cor.test(entityRefNoteChara$statement, entityRefNoteChara$countryMean, method="kendall")
-bootTau = boot(entityRefNoteChara[,c('statement', 'countryMean')], tauFunc, 2000)
-boot.ci(bootTau)
-
-cor.test(entityRefNoteChara$comparison, entityRefNoteChara$countryEntity, method="kendall")
-bootTau = boot(entityRefNoteChara[,c('comparison', 'countryEntity')], tauFunc, 2000)
-boot.ci(bootTau)
-cor.test(entityRefNoteChara$comparison, entityRefNoteChara$countryMean, method="kendall")
-bootTau = boot(entityRefNoteChara[,c('comparison', 'countryMean')], tauFunc, 2000)
-boot.ci(bootTau)
-
-cor.test(entityRefNoteChara$grouping, entityRefNoteChara$countryEntity, method="kendall")
-bootTau = boot(entityRefNoteChara[,c('grouping', 'countryEntity')], tauFunc, 2000)
-boot.ci(bootTau)
-cor.test(entityRefNoteChara$grouping, entityRefNoteChara$countryMean, method="kendall")
-bootTau = boot(entityRefNoteChara[,c('grouping', 'countryMean')], tauFunc, 2000)
-boot.ci(bootTau)
-
-#category and chart/visual component references
-cor.test(entityRefNoteChara$grouping, entityRefNoteChara$map + entityRefNoteChara$lineChart, method="kendall")
-bootTau = boot(data.frame(grouping = entityRefNoteChara$grouping, chartCite = entityRefNoteChara$map + entityRefNoteChara$lineChart), tauFunc, 2000)
-boot.ci(bootTau)
-cor.test(entityRefNoteChara$grouping, entityRefNoteChara$mapPoint + entityRefNoteChara$line + entityRefNoteChara$vertical, method="kendall")
-bootTau = boot(data.frame(grouping = entityRefNoteChara$grouping, componentCite = entityRefNoteChara$mapPoint + entityRefNoteChara$line + entityRefNoteChara$vertical), tauFunc, 2000)
-boot.ci(bootTau)
-
-cor.test(entityRefNoteChara$comparison, entityRefNoteChara$map + entityRefNoteChara$lineChart, method="kendall")
-bootTau = boot(data.frame(comparison = entityRefNoteChara$comparison, chartCite = entityRefNoteChara$map + entityRefNoteChara$lineChart), tauFunc, 2000)
-boot.ci(bootTau)
-cor.test(entityRefNoteChara$comparison, entityRefNoteChara$mapPoint + entityRefNoteChara$line + entityRefNoteChara$vertical, method="kendall")
-bootTau = boot(data.frame(comparison = entityRefNoteChara$comparison, componentCite = entityRefNoteChara$mapPoint + entityRefNoteChara$line + entityRefNoteChara$vertical), tauFunc, 2000)
-boot.ci(bootTau)
-
-cor.test(entityRefNoteChara$comparison, entityRefNoteChara$vertical, method="kendall")
-bootTau = boot(data.frame(comparison = entityRefNoteChara$comparison, vertical = entityRefNoteChara$vertical), tauFunc, 2000)
-boot.ci(bootTau)
-
-#overview versus detail
-cor.test(entityRefNoteChara$detailMean, entityRefNoteChara$vertical, method="kendall")
-bootTau = boot(entityRefNoteChara[, c('detailMean', 'vertical')], tauFunc, 2000)
-boot.ci(bootTau)
-cor.test(entityRefNoteChara$detailMean, entityRefNoteChara$yearEntity, method="kendall")
-bootTau = boot(entityRefNoteChara[, c('detailMean', 'yearEntity')], tauFunc, 2000)
-boot.ci(bootTau)
-cor.test(entityRefNoteChara$detailMean, entityRefNoteChara$note, method="kendall")
-bootTau = boot(entityRefNoteChara[, c('detailMean', 'note')], tauFunc, 2000)
-boot.ci(bootTau)
-cor.test(entityRefNoteChara$detailMean, entityRefNoteChara$lineChart, method="kendall")
-bootTau = boot(entityRefNoteChara[, c('detailMean', 'lineChart')], tauFunc, 2000)
-boot.ci(bootTau)
-
-cor.test(entityRefNoteChara$detailMean, entityRefNoteChara$yearMean, method="kendall")
-bootTau = boot(entityRefNoteChara[, c('detailMean', 'yearMean')], tauFunc, 2000)
-boot.ci(bootTau)
-cor.test(entityRefNoteChara$yearMean, entityRefNoteChara$vertical, method="kendall")
-bootTau = boot(entityRefNoteChara[, c('yearMean', 'vertical')], tauFunc, 2000)
-boot.ci(bootTau)
-cor.test(entityRefNoteChara$yearMean, entityRefNoteChara$yearEntity, method="kendall")
-bootTau = boot(entityRefNoteChara[, c('yearMean', 'yearEntity')], tauFunc, 2000)
-boot.ci(bootTau)
-
-#prior knowledge
-cor.test(entityRefNoteChara$priorMean, entityRefNoteChara$note, method="kendall")
-bootTau = boot(entityRefNoteChara[, c('priorMean', 'note')], tauFunc, 2000)
-boot.ci(bootTau)
-###########################
-
 ##################using entity references to predict note characteristics
 library(randomForest)
 library(healthcareai)
@@ -197,7 +112,7 @@ for(i in 1:nrow(entityNoteEva.test)){
 }
 
 
-#Fig. 6 export 11 * 5.5 inches
+#Fig. 7 export 11 * 5.5 inches
 shapRFCate = read.csv("shap/shapRFCateEntity.csv")
 featureImpRF = aggregate(.~dim, FUN = MeanAD, data = shapRFCate[, c('dim', 'shap')])
 featureImpRF = featureImpRF[order(featureImpRF$shap, decreasing = T), ]
@@ -277,7 +192,7 @@ for(i in 1:nrow(entityNoteEva.test)){
   write.table(shapSVMDetail, file = "shap/shapSVMDetailEntity.csv", append = T, sep = ',', col.names = F, row.names = F)
 }
 
-#Fig. 7
+#Fig. 8
 shapRFDetail = read.csv("shap/shapRFDetailEntity.csv")
 featureImpRF = aggregate(.~dim, FUN = MeanAD, data = shapRFDetail[, c('dim', 'shap')])
 featureImpRF = featureImpRF[order(featureImpRF$shap, decreasing = T), ]
@@ -364,7 +279,7 @@ for(i in 1:nrow(entityNoteEva.test)){
   write.table(shapSVMPrior, file = "shap/shapSVMPriorEntity.csv", append = T, sep = ',', col.names = F, row.names = F)
 }
 
-#Fig. 8
+#Fig. 9
 shapSVMPrior = read.csv("shap/shapSVMPriorEntity.csv")
 featureImpSVM = aggregate(.~dim, FUN = MeanAD, data = shapSVMPrior[, c('dim', 'shap')])
 featureImpSVM = featureImpSVM[order(featureImpSVM$shap, decreasing = T), ]

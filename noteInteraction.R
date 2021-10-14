@@ -142,7 +142,7 @@ for(i in 1:nrow(actionNoteEva.testFeatures)){
   write.table(shapSVMCateInt, file = "shap/shapSVMCateInt.csv", append = T, sep = ',', col.names = F, row.names = F)
 }
 
-#Fig. 9
+#Fig. 10
 shapRFCateInt = read.csv("shap/shapRFCateInt.csv")
 featureImpRF = aggregate(.~dim, FUN = MeanAD, data = shapRFCateInt[, c('dim', 'shap')])
 featureImpRF = featureImpRF[order(featureImpRF$shap, decreasing = T), ]
@@ -238,7 +238,7 @@ for(i in 1:nrow(actionNoteEva.testFeatures)){
   write.table(shapSVMOverviewInt, file = "shap/shapSVMOverviewInt.csv", append = T, sep = ',', col.names = F, row.names = F)
 }
 
-#Fig. 10
+#Fig. 11
 shapRFOverviewInt = read.csv("shap/shapRFOverviewInt.csv")
 featureImpRF = aggregate(.~dim, FUN = MeanAD, data = shapRFOverviewInt[, c('dim', 'shap')])
 featureImpRF = featureImpRF[order(featureImpRF$shap, decreasing = T), ]
@@ -294,7 +294,7 @@ for(i in 1:nrow(actionNoteEva.testForest)){
   write.table(shapRFPriorInt, file = "shap/shapRFPriorInt.csv", append = T, sep = ',', col.names = F, row.names = F)
 }
 
-#Fig. 11
+#Fig. 12
 shapRFPriorInt = read.csv("shap/shapRFPriorInt.csv")
 featureImpRF = aggregate(.~dim, FUN = MeanAD, data = shapRFPriorInt[, c('dim', 'shap')])
 featureImpRF = featureImpRF[order(featureImpRF$shap, decreasing = T), ]
